@@ -108,7 +108,7 @@ int writerecordinfile(int title, int money, char *details)
     {
         case 1:
                 printf("opening file");
-                fptrtrans = fopen("/home/root/expensetracker/transport","a+");
+                fptrtrans = fopen("/home/root/ExpenseTracker/transport","a+");
                 if (fptrtrans == NULL){
                     printf("\nNot able to open file\n");
                     } 
@@ -117,7 +117,7 @@ int writerecordinfile(int title, int money, char *details)
                 break;
     
         case 2:
-                fptredu = fopen("/home/root/expensetracker/education","a+");
+                fptredu = fopen("/home/root/ExpenseTracker/education","a+");
                 if (fptredu == NULL){
                      printf("\nNot able to open file\n");
                     } 
@@ -126,7 +126,7 @@ int writerecordinfile(int title, int money, char *details)
                 break;
 
         case 3:
-                fptrfood = fopen("/home/root/expensetracker/food","a+");
+                fptrfood = fopen("/home/root/ExpenseTracker/food","a+");
                 if (fptrfood == NULL){
                     printf("\nNot able to open file\n");
                     } 
@@ -134,7 +134,7 @@ int writerecordinfile(int title, int money, char *details)
                 fclose(fptrfood);
                 break;
         case 4:
-                fptrmisc = fopen("/home/root/expensetracker/misc","a+");
+                fptrmisc = fopen("/home/root/ExpenseTracker/misc","a+");
                 if (fptrmisc == NULL){
                      printf("\nNot able to open file\n");
                     } 
@@ -150,7 +150,7 @@ int display()
     int choice,ch;
     FILE *displayptr;
     char data[BUFFER_MAX_SIZE];
-    printf("\n *********************************** SELECT CATEGORY ****************************************\n 1. Transport \n 2. Education \n 3. Food \n 4. Miscellaneous \n 5. EXIT \n");
+    printf("\n *********************************** SELECT CATEGORY ****************************************\n 1. Transport \n 2. Education \n 3. Food \n 4. Miscellaneous \n 5. EXIT \n Your Choice: ");
     scanf("%d",&choice);
     if(!(choice>=1 && choice <=5)){
         invalidinput();
@@ -160,7 +160,7 @@ int display()
     switch(choice)
     {
         case 1:
-                displayptr = fopen("/home/root/expensetracker/transport","r");
+                displayptr = fopen("/home/root/ExpenseTracker/transport","r");
                 if (displayptr == NULL)
                     printf("\nFailed to read file\n");
                 else{
@@ -173,7 +173,7 @@ int display()
                 break;
 
         case 2:
-                displayptr = fopen("/home/root/expensetracker/education","r");
+                displayptr = fopen("/home/root/ExpenseTracker/education","r");
                 if (displayptr == NULL)
                     printf("\nFailed to read file\n");
                 else{
@@ -185,7 +185,7 @@ int display()
                     fclose(displayptr);
                 break;
         case 3:
-                displayptr = fopen("/home/root/expensetracker/food","r");
+                displayptr = fopen("/home/root/ExpenseTracker/food","r");
                 if (displayptr == NULL)
                     printf("\nFailed to read file\n");
                 else{
@@ -198,7 +198,7 @@ int display()
                 break;
         
         case 4:
-                displayptr = fopen("/home/root/expensetracker/misc","r");
+                displayptr = fopen("/home/root/ExpenseTracker/misc","r");
                 if (displayptr == NULL)
                     printf("\nFailed to read file\n");
                 else{
@@ -219,6 +219,7 @@ int display()
                 display();
                 break;
     }
+    startprogram();
     return 0;
     }
 }
@@ -242,37 +243,38 @@ int fileinitialization()
         FILE *fptrfood; 
         FILE *fptrmisc;
 
-        fptrtrans = fopen("/home/root/expensetracker/transport","r");
+        fptrtrans = fopen("/home/root/ExpenseTracker/transport","r");
         if (fptrtrans == NULL){
             printf("fileptrtrans doesnt exist");
-            system("touch /home/root/expensetracker/transport");
-            fptrtrans = fopen("/home/root/expensetracker/transport","a+"); 
+            system("touch /home/root/ExpenseTracker/transport");
+            fptrtrans = fopen("/home/root/ExpenseTracker/transport","a+"); 
             fprintf(fptrtrans,"--------------------------------------------------------------------------------------------\nID\t\t\tAmount\t\tDate\t\t\tDetails\n--------------------------------------------------------------------------------------------\n");
             fclose(fptrtrans);}
 
-        fptredu = fopen("/home/root/expensetracker/education","r");
+        fptredu = fopen("/home/root/ExpenseTracker/education","r");
         if (fptredu == NULL){
             printf("fileptredu doesnt exist");
-            system("touch /home/root/expensetracker/education");
-            fptredu = fopen("/home/root/expensetracker/education","a+");
+            system("touch /home/root/ExpenseTracker/education");
+            fptredu = fopen("/home/root/ExpenseTracker/education","a+");
             fprintf(fptredu,"--------------------------------------------------------------------------------------------\nID\t\t\tAmount\t\tDate\t\t\tDetails\n--------------------------------------------------------------------------------------------\n");
             fclose(fptredu);}
 
-        fptrfood = fopen("/home/root/expensetracker/food","r");
-        if (fptrtrans == NULL){
+        fptrfood = fopen("/home/root/ExpenseTracker/food","r");
+        if (fptrfood == NULL){
             printf("fileptrfood doesnt exist");        
-            system("touch /home/root/expensetracker/food");
-            fptrfood = fopen("/home/root/expensetracker/food","a+");
+            system("touch /home/root/ExpenseTracker/food");
+            fptrfood = fopen("/home/root/ExpenseTracker/food","a+");
             fprintf(fptrfood,"--------------------------------------------------------------------------------------------\nID\t\t\tAmount\t\tDate\t\t\tDetails\n--------------------------------------------------------------------------------------------\n");
             fclose(fptrfood);}
 
-        fptrmisc = fopen("/home/root/expensetracker/misc","r");
+        fptrmisc = fopen("/home/root/ExpenseTracker/misc","r");
         if (fptrmisc == NULL){
             printf("fileptrmisc doesnt exist");
-            system("touch /home/root/expensetracker/misc");
-            fptrmisc = fopen("/home/root/expensetracker/misc","a+");
+            system("touch /home/root/ExpenseTracker/misc");
+            fptrmisc = fopen("/home/root/ExpenseTracker/misc","a+");
             fprintf(fptrmisc,"--------------------------------------------------------------------------------------------\nID\t\t\tAmount\t\tDate\t\t\tDetails\n--------------------------------------------------------------------------------------------\n");
             fclose(fptrmisc);}
+        
         return 0;
 }
 
