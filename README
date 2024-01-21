@@ -1,0 +1,2 @@
+Contains options to add expense in different categories and view the entered expense.
+The expense are automatically stored wirh current date in a file in text format. Option to edit date is also available
